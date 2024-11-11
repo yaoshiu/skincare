@@ -1,5 +1,5 @@
-import Header from "@/components/Header";
-import { NavigationMenuDemo } from "@/components/NavigationMenuDemo";
+import Header from '@/components/Header';
+import { NavigationMenuDemo } from '@/components/NavigationMenuDemo';
 
 export default function Home() {
   return (

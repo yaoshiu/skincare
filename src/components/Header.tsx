@@ -1,41 +1,60 @@
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import type { AnchorHTMLAttributes, HTMLAttributes } from "react";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from '@/components/ui/navigation-menu';
+import { cn } from '@/lib/utils';
+import { CreditCard, Gift, Heart } from 'lucide-react';
+import Link from 'next/link';
+import type { AnchorHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
 
 interface Entry {
   title: string;
   description: string;
   href: string;
+  icon: ReactNode;
 }
 
 const gifts: Entry[] = [
   {
-    title: "All Gifts",
-    description: "Find the perfect gift for every occasion and loved one.",
-    href: "/gifts",
+    title: 'All Gifts',
+    description: 'Perfect gifts for any occasion',
+    href: '/gifts',
+    icon: <Gift />,
   },
   {
-    title: "Gift Sets",
-    description: "Curated gift sets for a luxurious, ready-to-give experience.",
-    href: "/gifts/sets",
+    title: 'Gift Sets',
+    description: 'Luxury sets, ready to gift',
+    href: '/gifts/sets',
+    icon: <Heart />,
   },
   {
-    title: "Gift Cards",
-    description: "Give the gift of choice with our flexible gift cards.",
-    href: "/gifts/cards",
+    title: 'Gift Cards',
+    description: 'The gift of choice',
+    href: '/gifts/cards',
+    icon: <CreditCard />,
   },
 ];
 
-export default function Header({ className, ...props }: HTMLAttributes<HTMLElement>) {
+export default function Header({
+  className,
+  ...props
+}: HTMLAttributes<HTMLElement>) {
   return (
-    <header className={cn("w-full flex justify-center items-center", className)} {...props}>
+    <header
+      className={cn('w-full flex justify-center items-center', className)}
+      {...props}
+    >
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>Gifts</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul className="flex flex-col w-64 p-4">
+              <ul className="p-2">
                 {gifts.map(({ description, ...props }, i) => (
                   <ContentListItem key={i} {...props}>
                     {description}
@@ -44,27 +63,61 @@ export default function Header({ className, ...props }: HTMLAttributes<HTMLEleme
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-              <Link href="/new">
-                New
-              </Link>
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-
+          <LinkItem href="/new">New</LinkItem>
+          <LinkItem href="/best-sellers">Best Sellers</LinkItem>
+          <LinkItem href="/skincare">Skincare</LinkItem>
         </NavigationMenuList>
       </NavigationMenu>
     </header>
   );
 }
 
-function ContentListItem({ children, title, className, ...props }: AnchorHTMLAttributes<HTMLAnchorElement> & { title: string; href: string }) {
+function LinkItem({
+  children,
+  className,
+  ...props
+}: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }) {
+  return (
+    <NavigationMenuItem>
+      <NavigationMenuLink
+        className={cn(navigationMenuTriggerStyle(), className)}
+        asChild
+      >
+        <Link {...props}>{children}</Link>
+      </NavigationMenuLink>
+    </NavigationMenuItem>
+  );
+}
+
+function ContentListItem({
+  children,
+  title,
+  className,
+  icon,
+  ...props
+}: AnchorHTMLAttributes<HTMLAnchorElement> & {
+  title: string;
+  href: string;
+  icon: ReactNode;
+}) {
   return (
     <li>
-      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "block space-y-1 h-fit w-full", className)} asChild>
+      <NavigationMenuLink
+        className={cn(
+          navigationMenuTriggerStyle(),
+          'group grid grid-cols-[1fr_12rem] gap-x-2 auto-rows-auto h-fit p-2 hover:bg-background',
+          className,
+        )}
+        asChild
+      >
         <Link {...props}>
-          <div className="text-sm font-medium leading-none">{title}</div>
-          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+          <div className="row-span-2 flex items-center justify-center rounded-sm border p-1 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground">
+            {icon}
+          </div>
+          <div className="text-sm font-medium">{title}</div>
+          <p className="line-clamp-1 text-xs leading-relaxed text-muted-foreground group-hover:text-foreground">
+            {children}
+          </p>
         </Link>
       </NavigationMenuLink>
     </li>
