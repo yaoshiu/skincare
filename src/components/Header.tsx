@@ -35,28 +35,36 @@ export default function Header({ className, ...props }: HTMLAttributes<HTMLEleme
           <NavigationMenuItem>
             <NavigationMenuTrigger>Gifts</NavigationMenuTrigger>
             <NavigationMenuContent>
-              <ul>
+              <ul className="flex flex-col w-64 p-4">
                 {gifts.map(({ description, ...props }, i) => (
-                  <ListItem key={i} {...props}>
+                  <ContentListItem key={i} {...props}>
                     {description}
-                  </ListItem>
+                  </ContentListItem>
                 ))}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+              <Link href="/new">
+                New
+              </Link>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+
         </NavigationMenuList>
       </NavigationMenu>
     </header>
   );
 }
 
-function ListItem({ children, title, className, ...props }: AnchorHTMLAttributes<HTMLAnchorElement> & { title: string, href: string }) {
+function ContentListItem({ children, title, className, ...props }: AnchorHTMLAttributes<HTMLAnchorElement> & { title: string; href: string }) {
   return (
     <li>
-      <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-        <Link className={cn("block", className)} {...props}>
-          <div className="leading-none">{title}</div>
-          <p className="line-clamp-2">{children}</p>
+      <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "block space-y-1 h-fit w-full", className)} asChild>
+        <Link {...props}>
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
         </Link>
       </NavigationMenuLink>
     </li>
