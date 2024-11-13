@@ -23,6 +23,7 @@ import {
   type HTMLAttributes,
   type ReactNode,
 } from 'react';
+import { ModeToggle } from './ui/mode-toggle';
 
 interface Entry {
   title: string;
@@ -74,12 +75,12 @@ export default function Header({
   return (
     <header
       className={cn(
-        'p-4 w-full flex justify-center items-center bg-background border-b',
+        'fixed z-10 p-4 w-full grid grid-cols-3 bg-background border-b',
         className,
       )}
       {...props}
     >
-      <NavigationMenu>
+      <NavigationMenu className="col-start-2 w-fit self-center justify-self-center">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="rounded-full">
@@ -98,6 +99,9 @@ export default function Header({
           <LinkItem href="/skincare">Skincare</LinkItem>
         </NavigationMenuList>
       </NavigationMenu>
+      <div className="justify-self-end">
+        <ModeToggle />
+      </div>
     </header>
   );
 }
