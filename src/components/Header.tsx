@@ -56,13 +56,13 @@ const gifts: Entry[] = [
 const sources: Entry[] = [
   {
     title: 'Chat',
-    description: 'Chat with our expert to create your regimen',
+    description: 'Get expert skincare advice',
     href: '/chat',
     icon: <MessageCircle />,
   },
   {
     title: 'Contact Us',
-    description: 'Get in touch with our customer service',
+    description: 'Support for every step',
     href: '/contact',
     icon: <MessageCircleQuestion />,
   },
@@ -80,7 +80,7 @@ export default function Header({
       )}
       {...props}
     >
-      <NavigationMenu className="col-start-2 w-fit self-center justify-self-center">
+      <NavigationMenu className="col-start-2 w-fit text-muted-foreground self-center justify-self-center">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="rounded-full">
@@ -159,7 +159,7 @@ function ContentListItem({
         asChild
       >
         <Link {...props}>
-          <div className="row-span-2 flex items-center justify-center rounded-sm border p-1 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground transition-colors">
+          <div className="row-span-2 flex items-center justify-center rounded-sm border p-1 group-hover:bg-foreground group-hover:text-primary-foreground group-hover:border-foreground transition-colors">
             {icon}
           </div>
           <div className="text-sm font-medium">{title}</div>
