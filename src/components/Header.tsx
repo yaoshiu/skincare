@@ -1,3 +1,5 @@
+'use client';
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,9 +10,19 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
-import { CreditCard, Gift, Heart } from 'lucide-react';
+import {
+  CreditCard,
+  Gift,
+  Heart,
+  MessageCircle,
+  MessageCircleQuestion,
+} from 'lucide-react';
 import Link from 'next/link';
-import type { AnchorHTMLAttributes, HTMLAttributes, ReactNode } from 'react';
+import {
+  type AnchorHTMLAttributes,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react';
 
 interface Entry {
   title: string;
@@ -40,28 +52,46 @@ const gifts: Entry[] = [
   },
 ];
 
+const sources: Entry[] = [
+  {
+    title: 'Chat',
+    description: 'Chat with our expert to create your regimen',
+    href: '/chat',
+    icon: <MessageCircle />,
+  },
+  {
+    title: 'Contact Us',
+    description: 'Get in touch with our customer service',
+    href: '/contact',
+    icon: <MessageCircleQuestion />,
+  },
+];
+
 export default function Header({
   className,
   ...props
 }: HTMLAttributes<HTMLElement>) {
   return (
     <header
-      className={cn('w-full flex justify-center items-center', className)}
+      className={cn(
+        'p-4 w-full flex justify-center items-center bg-background border-b',
+        className,
+      )}
       {...props}
     >
       <NavigationMenu>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger>Gifts</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="p-2">
-                {gifts.map(({ description, ...props }, i) => (
-                  <ContentListItem key={i} {...props}>
-                    {description}
-                  </ContentListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
+            <NavigationMenuTrigger className="rounded-full">
+              Gifts
+            </NavigationMenuTrigger>
+            <Content entries={gifts} />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger className="rounded-full">
+              Resources
+            </NavigationMenuTrigger>
+            <Content entries={sources} />
           </NavigationMenuItem>
           <LinkItem href="/new">New</LinkItem>
           <LinkItem href="/best-sellers">Best Sellers</LinkItem>
@@ -80,12 +110,26 @@ function LinkItem({
   return (
     <NavigationMenuItem>
       <NavigationMenuLink
-        className={cn(navigationMenuTriggerStyle(), className)}
+        className={cn(navigationMenuTriggerStyle(), 'rounded-full', className)}
         asChild
       >
         <Link {...props}>{children}</Link>
       </NavigationMenuLink>
     </NavigationMenuItem>
+  );
+}
+
+function Content({ entries }: { entries: Entry[] }) {
+  return (
+    <NavigationMenuContent>
+      <ul className="p-2">
+        {entries.map(({ description, ...props }, i) => (
+          <ContentListItem key={i} {...props}>
+            {description}
+          </ContentListItem>
+        ))}
+      </ul>
+    </NavigationMenuContent>
   );
 }
 
@@ -111,11 +155,11 @@ function ContentListItem({
         asChild
       >
         <Link {...props}>
-          <div className="row-span-2 flex items-center justify-center rounded-sm border p-1 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground">
+          <div className="row-span-2 flex items-center justify-center rounded-sm border p-1 group-hover:bg-foreground group-hover:text-background group-hover:border-foreground transition-colors">
             {icon}
           </div>
           <div className="text-sm font-medium">{title}</div>
-          <p className="line-clamp-1 text-xs leading-relaxed text-muted-foreground group-hover:text-foreground">
+          <p className="line-clamp-1 text-xs leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">
             {children}
           </p>
         </Link>
