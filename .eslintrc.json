@@ -1,8 +1,3 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:react/jsx-runtime",
-    "prettier"
-  ]
+  "extends": ["next/core-web-vitals", "next/typescript", "prettier"]
 }
