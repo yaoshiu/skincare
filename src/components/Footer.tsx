@@ -87,44 +87,48 @@ const links = [
 
 const social = [
   {
-    icon: <Facebook />,
+    label: 'Facebook',
+    Icon: Facebook,
     href: 'https://facebook.com',
   },
   {
-    icon: <Instagram />,
+    label: 'Instagram',
+    Icon: Instagram,
     href: 'https://instagram.com',
   },
   {
-    icon: <Youtube />,
+    label: 'Youtube',
+    Icon: Youtube,
     href: 'https://youtube.com',
   },
   {
-    icon: <Twitter />,
+    label: 'Twitter',
+    Icon: Twitter,
     href: 'https://twitter.com',
   },
 ];
 
 export default function Footer() {
   return (
-    <footer className="container mx-auto mb-16 flex justify-center gap-24">
-      <div className="flex gap-12 text-sm *:flex *:flex-col">
-        <div className="gap-8">
+    <footer className="container mx-auto mb-16 flex flex-col justify-center gap-8 p-4 md:flex-row">
+      <div className="flex gap-12 text-sm *:flex *:flex-col *:gap-8">
+        <div>
           <FooterSection title="Company" links={company} />
           <FooterSection title="Our Commitments" links={commitments} />
         </div>
-        <div className="gap-8">
+        <div>
           <FooterSection title="Customer Care" links={customerCare} />
           <FooterSection title="Gift Cards" links={giftCards} />
         </div>
-        <ul className="gap-4">
-          {links.map(({ label, href }, i) => (
-            <li key={i}>
-              <Link href={href}>{label}</Link>
-            </li>
-          ))}
-        </ul>
       </div>
-      <div className="w-min">
+      <ul className="flex flex-col gap-4">
+        {links.map(({ label, href }, i) => (
+          <li key={i}>
+            <Link href={href}>{label}</Link>
+          </li>
+        ))}
+      </ul>
+      <div className="max-w-sm md:ml-16">
         <h2 className="text-lg font-bold">Stay In Touch</h2>
         <TransitionInput
           className="mt-2"
@@ -141,9 +145,9 @@ export default function Footer() {
           <Link href="/contact">Contact Us</Link>
         </p>
         <div className="mt-4 flex gap-8">
-          {social.map(({ icon, href }, i) => (
-            <Link key={i} href={href}>
-              {icon}
+          {social.map(({ Icon, href, label }, i) => (
+            <Link key={i} href={href} aria-label={label}>
+              <Icon size={32} />
             </Link>
           ))}
         </div>
@@ -167,7 +171,7 @@ function TransitionInput({
     <div className="relative pt-6">
       <Input
         className={cn(
-          'peer h-auto w-96 rounded-none border-0 border-b p-0 shadow-none focus-visible:outline-none focus-visible:ring-0',
+          'peer h-auto w-full rounded-none border-0 border-b p-0 shadow-none focus-visible:outline-none focus-visible:ring-0',
           className,
         )}
         id={id}
@@ -195,9 +199,9 @@ function FooterSection({
   return (
     <div>
       <h2>{title}</h2>
-      <ul className="mt-2 text-muted-foreground">
+      <ul className="mt-4 text-muted-foreground">
         {links.map(({ title, href }, i) => (
-          <li key={i}>
+          <li key={i} className="mt-2">
             <Link
               className="transition-colors hover:text-foreground"
               href={href}

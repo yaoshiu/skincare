@@ -47,89 +47,94 @@ export default function Home() {
         <NoSSR>
           <Hero />
         </NoSSR>
-        <div className="container mx-auto my-8 max-w-screen-lg border *:mt-4 *:border-y last:mt-0 last:border-t-0">
-          <section className="p-12 py-24">
-            <TabsCard />
-          </section>
-          <section className="p-16 py-20">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold">Best Sellers</h2>
-              <Link
-                href="/best-sellers"
-                className="font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                View All
-                <ArrowRight className="inline" size="16" />
-              </Link>
-            </div>
-            <ul className="mt-8 flex justify-center gap-8">
-              {bestsellers.map(({ label, price, description, image }, i) => (
-                <li key={i}>
-                  <Link href="#">
-                    <Card className="rounded-md shadow-sm hover:shadow">
-                      <CardHeader>
-                        {image ? (
-                          <Image src={image} alt={label} />
-                        ) : (
-                          <Skeleton className="h-64 w-48" />
-                        )}
-                      </CardHeader>
-                      <CardContent>
-                        <h3>{label}</h3>
-                        <p>{price}</p>
-                        <p>{description}</p>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-          <section className="grid grid-cols-2">
-            <div className="flex flex-col justify-between border-r py-32 pl-8">
-              <h2 className="text-2xl font-bold">Layering Made Simple</h2>
-              <Image
-                src={collectionsSlotC}
-                alt="Layering Made Simple"
-                className="ml-auto"
-              />
-            </div>
-            <div className="p-8 py-16">
-              <h2 className="text-muted-foreground">
-                <MessageCircle size={16} className="mr-2 inline" />
-                Create your custom regimen
-              </h2>
-              <div className="text-2xl">
-                <Button
-                  className="mt-4 flex h-auto select-none justify-center rounded-full text-2xl"
-                  asChild
+        <div className="px-2">
+          <div className="container mx-auto my-8 max-w-screen-lg border *:mt-4 *:border-y last:mt-0 last:border-t-0">
+            <section>
+              <TabsCard />
+            </section>
+            <section className="p-4 py-16 md:py-20 lg:p-16">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-semibold">Best Sellers</h2>
+                <Link
+                  href="/best-sellers"
+                  className="font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
-                  <Link href="/chat">
-                    <strong>Chat</strong> with our skincare expert
-                  </Link>
-                </Button>
-                <p>
-                  to create your <strong>personalized regimen</strong> for
-                  radiant, healthy skin.
-                </p>
+                  View All
+                  <ArrowRight className="inline" size="16" />
+                </Link>
               </div>
-              <div className="mt-8 flex select-none flex-col gap-4">
-                <ExpertMessage>How can I help you?</ExpertMessage>
-                <CustomerMessage>
-                  My skin is dry and tight. Any product recommendations?
-                </CustomerMessage>
-                <ExpertMessage>
-                  Yes! Start with our <strong>Hydrating Cleanser</strong>,
-                  followed by the <strong>Revitalizing Toner</strong>. Use the{' '}
-                  <strong>Deep Nourish Serum</strong> and finish with the{' '}
-                  <strong>Ultra Rich Moisturizer</strong>.
-                </ExpertMessage>
-                <CustomerMessage>
-                  That sounds perfect. Thank you!
-                </CustomerMessage>
+              <ul className="mt-8 flex justify-center gap-4 lg:gap-8">
+                {bestsellers.map(({ label, price, description, image }, i) => (
+                  <li
+                    key={i}
+                    className={i >= 2 ? 'hidden md:inline-block' : ''}
+                  >
+                    <Link href="#">
+                      <Card className="w-36 rounded-md shadow-sm hover:shadow md:w-48 lg:w-64">
+                        <CardHeader className="p-4">
+                          {image ? (
+                            <Image src={image} alt={label} />
+                          ) : (
+                            <Skeleton className="h-36 w-full md:h-48 lg:h-64" />
+                          )}
+                        </CardHeader>
+                        <CardContent className="p-4 pt-0">
+                          <h3>{label}</h3>
+                          <p>{price}</p>
+                          <p>{description}</p>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+            <section className="grid grid-rows-2 overflow-hidden md:grid-cols-2 md:grid-rows-1">
+              <div className="flex flex-col justify-between border-b py-32 pl-8 md:border-r">
+                <h2 className="text-2xl font-bold">Layering Made Simple</h2>
+                <Image
+                  src={collectionsSlotC}
+                  alt="Layering Made Simple"
+                  className="ml-auto"
+                />
               </div>
-            </div>
-          </section>
+              <div className="p-8 py-16">
+                <h2 className="text-muted-foreground">
+                  <MessageCircle size={16} className="mr-2 inline" />
+                  Create your custom regimen
+                </h2>
+                <div className="text-2xl">
+                  <Button
+                    className="mt-4 flex h-auto select-none justify-center rounded-full text-2xl"
+                    asChild
+                  >
+                    <Link href="/chat">
+                      <strong>Chat</strong> with our skincare expert
+                    </Link>
+                  </Button>
+                  <p>
+                    to create your <strong>personalized regimen</strong> for
+                    radiant, healthy skin.
+                  </p>
+                </div>
+                <div className="mt-8 flex select-none flex-col gap-4">
+                  <ExpertMessage>How can I help you?</ExpertMessage>
+                  <CustomerMessage>
+                    My skin is dry and tight. Any product recommendations?
+                  </CustomerMessage>
+                  <ExpertMessage>
+                    Yes! Start with our <strong>Hydrating Cleanser</strong>,
+                    followed by the <strong>Revitalizing Toner</strong>. Use the{' '}
+                    <strong>Deep Nourish Serum</strong> and finish with the{' '}
+                    <strong>Ultra Rich Moisturizer</strong>.
+                  </ExpertMessage>
+                  <CustomerMessage>
+                    That sounds perfect. Thank you!
+                  </CustomerMessage>
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
       </main>
       <Footer />

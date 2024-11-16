@@ -68,7 +68,7 @@ export default function Hero() {
   return (
     <div>
       <motion.div
-        className="fixed left-0 top-0 z-10 origin-left"
+        className="fixed left-0 top-0 z-20 origin-left"
         style={{
           color,
           ...icon,
@@ -77,7 +77,7 @@ export default function Hero() {
         <Activity />
       </motion.div>
       <motion.h1
-        className="fixed left-0 top-0 z-10 origin-left select-none"
+        className="fixed left-0 top-0 z-20 origin-left select-none"
         style={{
           color,
           ...heading,
