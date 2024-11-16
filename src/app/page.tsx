@@ -90,7 +90,7 @@ export default function Home() {
               </ul>
             </section>
             <section className="grid grid-rows-2 overflow-hidden md:grid-cols-2 md:grid-rows-1">
-              <div className="flex flex-col justify-between border-b py-32 pl-8 md:border-r">
+              <div className="flex flex-col justify-between border-b py-24 pl-8 md:border-r md:py-32">
                 <h2 className="text-2xl font-bold">Layering Made Simple</h2>
                 <Image
                   src={collectionsSlotC}
@@ -98,14 +98,14 @@ export default function Home() {
                   className="ml-auto"
                 />
               </div>
-              <div className="p-8 py-16">
+              <div className="p-8 md:py-16">
                 <h2 className="text-muted-foreground">
                   <MessageCircle size={16} className="mr-2 inline" />
                   Create your custom regimen
                 </h2>
                 <div className="text-2xl">
                   <Button
-                    className="mt-4 flex h-auto select-none justify-center rounded-full text-2xl"
+                    className="mt-4 flex h-auto select-none justify-center rounded-full text-lg md:text-2xl"
                     asChild
                   >
                     <Link href="/chat">
