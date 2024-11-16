@@ -68,7 +68,7 @@ export default function Hero() {
   return (
     <div>
       <motion.div
-        className="fixed top-0 left-0 z-10 origin-left"
+        className="fixed left-0 top-0 z-10 origin-left"
         style={{
           color,
           ...icon,
@@ -77,7 +77,7 @@ export default function Hero() {
         <Activity />
       </motion.div>
       <motion.h1
-        className="fixed top-0 left-0 z-10 origin-left select-none"
+        className="fixed left-0 top-0 z-10 origin-left select-none"
         style={{
           color,
           ...heading,
@@ -86,14 +86,14 @@ export default function Hero() {
         LUNEX
       </motion.h1>
       <div
-        className="absolute dark text-foreground origin-left"
+        className="dark absolute origin-left text-foreground"
         style={{
           top: description.y,
           left: description.x,
         }}
       >
         <p>Where radiance meets care.</p>
-        <Button className="rounded-full block mt-4 select-none" asChild>
+        <Button className="mt-4 block select-none rounded-full" asChild>
           <Link href="/new">Check Out New Releases</Link>
         </Button>
       </div>

@@ -75,12 +75,12 @@ export default function Header({
   return (
     <header
       className={cn(
-        'fixed z-10 p-4 w-full grid grid-cols-3 bg-background border-b',
+        'fixed z-10 grid w-full grid-cols-3 border-b bg-background p-4',
         className,
       )}
       {...props}
     >
-      <NavigationMenu className="col-start-2 w-fit text-muted-foreground self-center justify-self-center">
+      <NavigationMenu className="col-start-2 w-fit self-center justify-self-center text-muted-foreground">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger className="rounded-full">
@@ -153,17 +153,17 @@ function ContentListItem({
       <NavigationMenuLink
         className={cn(
           navigationMenuTriggerStyle(),
-          'group grid grid-cols-[1fr_12rem] gap-x-2 auto-rows-auto h-fit p-2 hover:bg-background',
+          'group grid h-fit auto-rows-auto grid-cols-[1fr_12rem] gap-x-2 p-2 hover:bg-background',
           className,
         )}
         asChild
       >
         <Link {...props}>
-          <div className="row-span-2 flex items-center justify-center rounded-sm border p-1 group-hover:bg-foreground group-hover:text-primary-foreground group-hover:border-foreground transition-colors">
+          <div className="row-span-2 flex items-center justify-center rounded-sm border p-1 transition-colors group-hover:border-foreground group-hover:bg-foreground group-hover:text-primary-foreground">
             {icon}
           </div>
           <div className="text-sm font-medium">{title}</div>
-          <p className="line-clamp-1 text-xs leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">
+          <p className="line-clamp-1 text-xs leading-relaxed text-muted-foreground transition-colors group-hover:text-foreground">
             {children}
           </p>
         </Link>
