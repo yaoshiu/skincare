@@ -100,12 +100,12 @@ export default function TabsCard() {
       className="flex gap-20"
     >
       <div className="flex flex-col justify-between">
-        <TabsList className="rounded-full p-0 gap-2 w-fit">
+        <TabsList className="w-fit gap-2 rounded-full p-0">
           {tabs.map(({ value, label }) => (
             <RoundedTabsTrigger key={value} value={value}>
               <span
                 className={cn(
-                  'z-10 transition-colors font-medium text-sm',
+                  'z-10 text-sm font-medium transition-colors',
                   tab === value ? 'delay-150' : '',
                 )}
               >
@@ -113,7 +113,7 @@ export default function TabsCard() {
               </span>
               {tab === value ? (
                 <motion.span
-                  className="absolute inset-0 bg-background rounded-full shadow-sm border"
+                  className="absolute inset-0 rounded-full border bg-background shadow-sm"
                   layoutId="indicator"
                 />
               ) : null}
@@ -124,7 +124,7 @@ export default function TabsCard() {
           <TabsContent
             key={value}
             value={value}
-            className="*:leading-relaxed text-2xl text-muted-foreground [&_strong]:text-foreground [&_strong]:text-3xl"
+            className="text-2xl text-muted-foreground *:leading-relaxed [&_strong]:text-3xl [&_strong]:text-foreground"
           >
             <motion.div
               initial={{ opacity: 0 }}
@@ -147,7 +147,7 @@ export default function TabsCard() {
             {details}
           </motion.p>
           <Button
-            className="w-64 mt-8 rounded-full flex items-center justify-between"
+            className="mt-8 flex w-64 items-center justify-between rounded-full"
             asChild
           >
             <Link href={`/${value}`}>
@@ -175,7 +175,7 @@ function RoundedTabsTrigger({
   return (
     <TabsTrigger
       className={cn(
-        'relative px-4 rounded-full h-full data-[state=active]:shadow-none data-[state=active]:bg-transparent',
+        'relative h-full rounded-full px-4 data-[state=active]:bg-transparent data-[state=active]:shadow-none',
         className,
       )}
       {...props}
