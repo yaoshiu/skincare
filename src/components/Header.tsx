@@ -89,8 +89,8 @@ const links = [
   },
 ];
 
-const MotionX = motion(X);
-const MotionMenu = motion(Menu);
+const MotionX = motion.create(X);
+const MotionMenu = motion.create(Menu);
 
 export default function Header({
   className,
