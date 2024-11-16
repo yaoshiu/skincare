@@ -161,7 +161,7 @@ function ExpertMessage({
   ...props
 }: HTMLAttributes<HTMLDivElement>) {
   return (
-    <Message className={cn('bg-background')} {...props}>
+    <Message className={(cn('bg-background'), className)} {...props}>
       {children}
     </Message>
   );

@@ -2,11 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
-import {
-  useState,
-  type ButtonHTMLAttributes,
-  type HTMLAttributes,
-} from 'react';
+import { useState, type ButtonHTMLAttributes } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';

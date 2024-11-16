@@ -158,8 +158,9 @@ function TransitionInput({
   id,
   ...props
 }: InputHTMLAttributes<HTMLInputElement>) {
+  const newId = useId();
   if (!id) {
-    id = useId();
+    id = newId;
   }
 
   return (
