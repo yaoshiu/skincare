@@ -86,13 +86,14 @@ export default function Hero() {
         LUNEX
       </motion.h1>
       <div
-        className="absolute dark text-foreground top-0 left-0 origin-left"
+        className="absolute dark text-foreground origin-left"
         style={{
-          translate: `${description.x}px ${description.y}px`,
+          top: description.y,
+          left: description.x,
         }}
       >
         <p>Where radiance meets care.</p>
-        <Button className="rounded-full block mt-4" asChild>
+        <Button className="rounded-full block mt-4 select-none" asChild>
           <Link href="/new">Check Out New Releases</Link>
         </Button>
       </div>
