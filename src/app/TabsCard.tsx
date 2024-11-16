@@ -146,16 +146,19 @@ export default function TabsCard() {
           >
             {details}
           </motion.p>
-          <Button className="w-64 mt-8 rounded-full" asChild>
+          <Button
+            className="w-64 mt-8 rounded-full flex items-center justify-between"
+            asChild
+          >
             <Link href={`/${value}`}>
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="inline-flex justify-between items-center w-full select-none"
               >
-                Explore Our {label} <ShoppingBag />
+                Explore Our {label}
               </motion.span>
+              <ShoppingBag />
             </Link>
           </Button>
         </TabsContent>
