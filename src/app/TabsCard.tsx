@@ -152,7 +152,7 @@ export default function TabsCard() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="inline-flex justify-between items-center w-full"
+                className="inline-flex justify-between items-center w-full select-none"
               >
                 Explore Our {label} <ShoppingBag />
               </motion.span>
