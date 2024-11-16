@@ -27,14 +27,7 @@ import { Accordion, AccordionContent, AccordionTrigger } from './ui/accordion';
 import { AccordionItem } from '@radix-ui/react-accordion';
 import { motion } from 'framer-motion';
 
-interface Entry {
-  title: string;
-  description: string;
-  href: string;
-  Icon: typeof X;
-}
-
-const gifts: Entry[] = [
+const gifts = [
   {
     title: 'All Gifts',
     description: 'Perfect gifts for any occasion',
@@ -55,7 +48,7 @@ const gifts: Entry[] = [
   },
 ];
 
-const sources: Entry[] = [
+const sources = [
   {
     title: 'Chat',
     description: 'Get expert skincare advice',

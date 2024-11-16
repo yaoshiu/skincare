@@ -97,8 +97,9 @@ export default function TabsCard() {
       className="flex flex-col px-8 py-16 md:p-12 md:py-24 lg:flex-row lg:gap-20"
     >
       <div className="relative flex flex-col items-center justify-between gap-4 lg:items-start">
-        <ScrollArea className="-ml-8 w-[calc(100%+4rem)] place-self-start overflow-visible *:px-8 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-6 before:bg-gradient-to-r before:from-background before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-6 after:bg-gradient-to-r after:from-transparent after:to-background md:before:hidden md:after:hidden">
-          <TabsList className="w-fit gap-2 rounded-full p-0 pr-4">
+        {/* I Hate This */}
+        <ScrollArea className="-ml-8 w-[calc(100%+4rem)] place-self-start overflow-visible *:px-8 *:*:pr-8 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-6 before:bg-gradient-to-r before:from-background before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-6 after:bg-gradient-to-r after:from-transparent after:to-background md:before:hidden md:after:hidden">
+          <TabsList className="w-fit gap-2 rounded-full p-0">
             {tabs.map(({ value, label }) => (
               <RoundedTabsTrigger key={value} value={value}>
                 <span
