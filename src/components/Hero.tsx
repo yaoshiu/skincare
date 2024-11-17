@@ -60,11 +60,6 @@ export default function Hero() {
     ['hsl(0, 0%, 98%)', `hsl(${foreground})`],
   );
 
-  const description = {
-    x: width / 5,
-    y: height / 1.5,
-  };
-
   return (
     <div>
       <motion.div
