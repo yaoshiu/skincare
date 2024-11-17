@@ -133,6 +133,7 @@ export default function Footer() {
         <TransitionInput
           className="mt-2"
           type="email"
+          id="email"
           placeholder="Email Address"
         />
         <p className="mt-4 text-xs text-muted-foreground [&_a]:underline">
