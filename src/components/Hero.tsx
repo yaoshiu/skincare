@@ -85,13 +85,7 @@ export default function Hero() {
       >
         LUNEX
       </motion.h1>
-      <div
-        className="dark absolute origin-left text-foreground"
-        style={{
-          top: description.y,
-          left: description.x,
-        }}
-      >
+      <div className="dark absolute left-[20%] top-2/3 origin-left text-foreground">
         <p>Where radiance meets care.</p>
         <Button className="mt-4 block select-none rounded-full" asChild>
           <Link href="/new">Check Out New Releases</Link>
