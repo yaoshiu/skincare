@@ -87,6 +87,9 @@ const tabs = [
   },
 ];
 
+const MotionTabsContent = motion.create(TabsContent);
+const MotionLink = motion.create(Link);
+
 export default function TabsCard() {
   const [tab, setTab] = useState('cleansers');
 
@@ -94,9 +97,9 @@ export default function TabsCard() {
     <Tabs
       onValueChange={setTab}
       defaultValue="cleansers"
-      className="flex flex-col px-8 py-16 md:p-12 md:py-24 lg:flex-row lg:gap-20"
+      className="flex flex-col px-8 py-16 md:gap-12 md:p-12 md:py-24 lg:flex-row lg:gap-20"
     >
-      <div className="relative flex flex-col items-center justify-between gap-4 lg:items-start">
+      <div className="relative flex min-h-full flex-col items-center justify-between gap-4 lg:items-start">
         {/* I Hate This */}
         <ScrollArea className="-ml-8 w-[calc(100%+4rem)] place-self-start overflow-visible *:px-8 *:*:pr-8 before:absolute before:left-0 before:top-0 before:z-10 before:h-full before:w-6 before:bg-gradient-to-r before:from-background before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:h-full after:w-6 after:bg-gradient-to-r after:from-transparent after:to-background md:before:hidden md:after:hidden">
           <TabsList className="w-fit gap-2 rounded-full border bg-transparent p-0">
@@ -122,25 +125,21 @@ export default function TabsCard() {
           <ScrollBar orientation="horizontal" className="hidden" />
         </ScrollArea>
         {tabs.map(({ value, description }) => (
-          <TabsContent
+          <MotionTabsContent
             key={value}
             value={value}
-            className="text-2xl text-muted-foreground *:leading-relaxed [&_strong]:text-3xl [&_strong]:text-foreground"
+            className="h-56 text-2xl text-muted-foreground *:leading-relaxed sm:h-auto [&_strong]:text-3xl [&_strong]:text-foreground"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <motion.div
-              key={value}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              {description}
-            </motion.div>
-          </TabsContent>
+            {description}
+          </MotionTabsContent>
         ))}
       </div>
       {tabs.map(({ value, label, details }) => (
-        <TabsContent key={value} value={value} className="lg:w-min">
-          <div className="flex flex-col items-center">
+        <TabsContent key={value} value={value} className="mt-0 h-full lg:w-min">
+          <div className="flex flex-col items-center justify-between">
             <motion.p
               className="hidden text-muted-foreground md:block md:h-16 lg:h-36"
               initial={{ opacity: 0 }}
@@ -150,19 +149,19 @@ export default function TabsCard() {
               {details}
             </motion.p>
             <Button
-              className="mt-8 flex w-72 items-center justify-between rounded-full"
+              className="mt-8 flex w-full min-w-64 items-center justify-between rounded-full"
               asChild
             >
-              <Link href={`/${value}`}>
-                <motion.span
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  Explore Our {label}
-                </motion.span>
+              <MotionLink
+                href={`/${value}`}
+                key={value}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                Explore Our {label}
                 <ShoppingBag />
-              </Link>
+              </MotionLink>
             </Button>
           </div>
         </TabsContent>
