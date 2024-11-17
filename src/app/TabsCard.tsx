@@ -128,6 +128,7 @@ export default function TabsCard() {
             className="text-2xl text-muted-foreground *:leading-relaxed [&_strong]:text-3xl [&_strong]:text-foreground"
           >
             <motion.div
+              key={value}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -141,7 +142,7 @@ export default function TabsCard() {
         <TabsContent key={value} value={value} className="lg:w-min">
           <div className="flex flex-col items-center">
             <motion.p
-              className="hidden text-muted-foreground md:block"
+              className="hidden text-muted-foreground md:block md:h-16 lg:h-36"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -149,7 +150,7 @@ export default function TabsCard() {
               {details}
             </motion.p>
             <Button
-              className="mt-8 flex w-64 items-center justify-between rounded-full"
+              className="mt-8 flex w-72 items-center justify-between rounded-full"
               asChild
             >
               <Link href={`/${value}`}>

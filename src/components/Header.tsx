@@ -25,7 +25,7 @@ import { ModeToggle } from './ui/mode-toggle';
 import { Button } from './ui/button';
 import { Accordion, AccordionContent, AccordionTrigger } from './ui/accordion';
 import { AccordionItem } from '@radix-ui/react-accordion';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const gifts = [
   {
@@ -171,19 +171,25 @@ export default function Header({
           className="col-start-3 h-fit justify-self-end rounded-full p-2 md:hidden"
           aria-label="Open Menu"
         >
-          {open ? (
-            <MotionX
-              initial={{ rotate: -90, scale: 0 }}
-              animate={{ rotate: 0, scale: 1 }}
-              exit={{ rotate: 90, scale: 0 }}
-            />
-          ) : (
-            <MotionMenu
-              initial={{ rotate: -90, scale: 0 }}
-              animate={{ rotate: 0, scale: 1 }}
-              exit={{ rotate: 90, scale: 0 }}
-            />
-          )}
+          <AnimatePresence initial={false} mode="wait">
+            {open ? (
+              <MotionX
+                key="x"
+                initial={{ rotate: -90, scale: 0 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{ duration: 0.1 }}
+                exit={{ rotate: 90, scale: 0 }}
+              />
+            ) : (
+              <MotionMenu
+                key="menu"
+                initial={{ rotate: -90, scale: 0 }}
+                animate={{ rotate: 0, scale: 1 }}
+                transition={{ duration: 0.1 }}
+                exit={{ rotate: 90, scale: 0 }}
+              />
+            )}
+          </AnimatePresence>
         </Button>
       </div>
       {open && (

@@ -105,7 +105,7 @@ export default function Home() {
                 </h2>
                 <div className="text-2xl">
                   <Button
-                    className="mt-4 flex h-auto select-none justify-center rounded-full text-lg md:text-2xl"
+                    className="mt-4 flex h-auto select-none justify-center rounded-full text-lg lg:text-2xl"
                     asChild
                   >
                     <Link href="/chat">
