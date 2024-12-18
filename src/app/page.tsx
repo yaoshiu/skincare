@@ -9,30 +9,34 @@ import { Skeleton } from '@/components/ui/skeleton';
 import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 
-import collectionsSlotC from './collections-slot-c.webp';
 import { Button } from '@/components/ui/button';
 import type { HTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
 import Footer from '@/components/Footer';
 
+import collectionsSlotC from './collections-slot-c.webp';
+import hyaluronicAcid from './ord-hyaluronic-acid-2pct-B5-30ml-Clr-Acu.webp';
+import niacinamide from './rdn-niacinamide-10pct-zinc-1pct-30ml.webp';
+import naturalMoisturizingFactors from './rdn-natural-moisturizing-factors-ha-30ml.webp';
+
 const bestsellers = [
   {
-    label: 'Text',
-    price: 0,
-    description: 'Text',
-    image: null,
+    label: 'Hyaluronic Acid 2% + B5 (with Caramides)',
+    price: 12.0,
+    description: 'Plumps, Smooths',
+    image: hyaluronicAcid,
   },
   {
-    label: 'Text',
-    price: 0,
-    description: 'Text',
-    image: null,
+    label: 'Niacinamide 10% + Zinc 1%',
+    price: 6.6,
+    description: 'Oil Control, Brightens, Smooths',
+    image: niacinamide,
   },
   {
-    label: 'Text',
-    price: 0,
-    description: 'Text',
-    image: null,
+    label: 'Natural Moisturizing Factors + HA',
+    price: 8.7,
+    description: 'Supports Skin Barrier',
+    image: naturalMoisturizingFactors,
   },
 ];
 
@@ -70,18 +74,18 @@ export default function Home() {
                     className={i >= 2 ? 'hidden md:inline-block' : ''}
                   >
                     <Link href="#">
-                      <Card className="w-36 rounded-md shadow-sm hover:shadow md:w-48 lg:w-64">
+                      <Card className="flex h-full w-36 flex-col rounded-md shadow-sm hover:shadow md:w-48 lg:w-64">
                         <CardHeader className="p-4">
-                          {image ? (
-                            <Image src={image} alt={label} />
-                          ) : (
-                            <Skeleton className="h-36 w-full md:h-48 lg:h-64" />
-                          )}
+                          <div className="relative h-28 w-full md:h-40 lg:h-56">
+                            <Image src={image} alt={label} fill />
+                          </div>
                         </CardHeader>
-                        <CardContent className="p-4 pt-0">
-                          <h3>{label}</h3>
-                          <p>{price}</p>
-                          <p>{description}</p>
+                        <CardContent className="flex h-full flex-col justify-between p-4 pt-0">
+                          <h3 className="font-semibold">{label}</h3>
+                          <p className="font-medium">$ {price}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {description}
+                          </p>
                         </CardContent>
                       </Card>
                     </Link>
