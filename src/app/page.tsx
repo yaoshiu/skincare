@@ -5,7 +5,6 @@ import NoSSR from '@/components/NoSSR';
 import TabsCard from './TabsCard';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Skeleton } from '@/components/ui/skeleton';
 import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 
